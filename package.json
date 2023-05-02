@@ -1,0 +1,118 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "raycast-mui-search",
+  "version": "1.0.0",
+  "description": "Search the online MUI documentation and limit your search results to specific MUI libraries.",
+  "categories": [
+    "Developer Tools",
+    "Documentation",
+    "Web"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kgrhartlage/raycast-mui-search.git"
+  },
+  "license": "MIT",
+  "author": "kgrhartlage",
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "format": "prettier --write 'src/**/*.{ts,tsx}'",
+    "lint": "ray lint && eslint --fix 'src/**/*.{ts,tsx}'",
+    "pre-commit": "lint-staged",
+    "prepare": "husky install",
+    "publish": "npx @raycast/api@latest publish"
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "npm run format",
+      "npm run lint"
+    ]
+  },
+  "dependencies": {
+    "@labforward/config": "^0.1.1",
+    "@labforward/eslint-config-react": "^0.1.1",
+    "@raycast/api": "^1.50.0",
+    "@raycast/utils": "^1.5.2",
+    "algoliasearch": "^4.17.0"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "1.0.5",
+    "@types/node": "18.8.3",
+    "@types/react": "18.0.9",
+    "eslint": "^7.32.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^13.2.1",
+    "prettier": "^2.5.1",
+    "typescript": "^4.4.3"
+  },
+  "icon": "command.png",
+  "commands": [
+    {
+      "description": "Search MUI documentation.",
+      "mode": "view",
+      "name": "index",
+      "subtitle": "MUI",
+      "title": "Search Documentation"
+    }
+  ],
+  "importSort": {
+    ".ts, .tsx, .js": {
+      "style": "@labforward/config/import-sort",
+      "parser": "typescript"
+    }
+  },
+  "preferences": [
+    {
+      "default": true,
+      "description": "Material UI is based on Google's Material Design.",
+      "label": "Material UI",
+      "name": "material-ui",
+      "required": false,
+      "title": "Include in search results",
+      "type": "checkbox"
+    },
+    {
+      "default": true,
+      "description": "Joy UI is based on MUI's own in-house design principles.",
+      "label": "Joy UI",
+      "name": "joy-ui",
+      "required": false,
+      "type": "checkbox"
+    },
+    {
+      "default": true,
+      "description": "Base UI is a library of unstyled UI components.",
+      "label": "Base UI",
+      "name": "base",
+      "required": false,
+      "type": "checkbox"
+    },
+    {
+      "default": true,
+      "description": "Advanced and powerful components for complex use cases.",
+      "label": "MUI X",
+      "name": "mui-x",
+      "required": false,
+      "type": "checkbox"
+    },
+    {
+      "default": true,
+      "description": "MUI System is a collection of CSS utilities.",
+      "label": "MUI System",
+      "name": "system",
+      "required": false,
+      "type": "checkbox"
+    },
+    {
+      "default": "5",
+      "description": "Components that allow selecting date and time values.",
+      "name": "limit",
+      "required": true,
+      "title": "Maximum search results per section",
+      "type": "textfield"
+    }
+  ],
+  "title": "MUI Documentation Search"
+}
